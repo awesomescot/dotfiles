@@ -10,7 +10,7 @@ done
 
 if [ ! -d ${HOME}/.dotfiles ] ; then
 	echo "NO DOTFILES - checking out for you"
-	cd ${HOME} && git checkout git@github.com:maguec/dotfiles.git .dotfiles
+	cd ${HOME} && git checkout git@github.com:awesomescot/dotfiles.git .dotfiles
 fi
 
 #setup vim
