@@ -55,6 +55,14 @@ au BufRead,BufNewFile *.rb   setfiletype ruby
 :autocmd FileType ruby set expandtab
 :autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
 
+" embeded ruby "
+au BufRead,BufNewFile *.erb  setfiletype eruby 
+:autocmd FileType eruby set shiftwidth=2
+:autocmd FileType eruby set softtabstop=2
+:autocmd FileType eruby set autoindent
+:autocmd FileType eruby set smartindent
+:autocmd FileType eruby set expandtab
+
 " golang syntax "
 au BufRead,BufNewFile *.go set filetype=go
 :autocmd FileType go map <F9> :w<CR>:!go build %<CR>

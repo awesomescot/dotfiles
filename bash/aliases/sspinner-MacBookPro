@@ -1,1 +1,5 @@
 alias cu='knife cookbook upload '
+
+function gpm {
+	git add . && git commit -m "$1" && git push
+}
