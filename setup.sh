@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in .vim .vimrc .gvimrc .bashrc .bash_profile .muttrc; do
+for i in .vim .vimrc .gvimrc .bashrc .bash_profile; do
 
 	if [ -f ${HOME}/${i} ] ; then
 		echo "moving ${HOME}/${i} to ${HOME}/${i}.bkup"
@@ -22,8 +22,6 @@ ln -s ${HOME}/.dotfiles/vim ${HOME}/.vim
 ln -s ${HOME}/.dotfiles/bash/bashrc ${HOME}/.bashrc
 ln -s ${HOME}/.dotfiles/bash/profile ${HOME}/.bash_profile
 
-#setup mutt
-ln -s ${HOME}/.dotfiles/mutt/mutt ${HOME}/.muttrc
 
 if [ ! -d ${HOME}/.vim/bundle/vundle ]; then
 	echo "Installing vundle"
