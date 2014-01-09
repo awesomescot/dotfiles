@@ -1,0 +1,31 @@
+#set the bottom status bar
+#hardstatus on
+#hardstatus alwayslastline
+#hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+#
+## no annoying audible bell, please
+# vbell on
+#                                                                                     
+## Change the annoying vbell message from WOOF
+#                                                                                     
+# vbell_msg             " *beep-beep* "
+#                                                                                     
+# shell bash
+#                                                                                     
+#                                                                                     
+## set the scroll back for 10,000 lines lots and lots ;)
+#                                                                                     
+ defscrollback 10000
+#
+
+screen -t "tools01" ssh tools01.prod.cpf.com
+screen -t "tools02" ssh tools02.prod.cpf.com
+screen -t "tools03" ssh tools03.prod.cpf.com
+screen -t "tools04" ssh tools04.prod.cpf.com
+screen -t "job02" ssh job02.prod.cpf.com
+screen -t "mysql03" ssh mysql03.prod.cpf.com
+screen -t "mysql01" ssh mysql01.prod.cpf.com
+screen -t "mysql02" ssh mysql02.prod.cpf.com
+screen -t "mem01" ssh mem01.prod.cpf.com
+screen -t "mem02" ssh mem02.prod.cpf.com
+screen -t "mem03" ssh mem03.prod.cpf.com
