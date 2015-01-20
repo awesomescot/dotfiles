@@ -45,7 +45,7 @@ ZSH_THEME="nebirhos"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cap knife rvm)
+plugins=(git cap knife rvm zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,7 +80,6 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  
 
 if [[ -s $HOME/.rvm/scripts/rvm ]] ; then
         source $HOME/.rvm/scripts/rvm
