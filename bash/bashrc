@@ -178,3 +178,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
+
+# added by travis gem
+[ -f /home/scot/.travis/travis.sh ] && source /home/scot/.travis/travis.sh

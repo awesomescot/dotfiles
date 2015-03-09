@@ -99,3 +99,6 @@ if ! [ -d ${HOME}/tmp/${USERNAME}-vim ] ; then
         mkdir -p ${HOME}/tmp/vim
 fi
 
+
+# added by travis gem
+[ -f /home/scot/.travis/travis.sh ] && source /home/scot/.travis/travis.sh
