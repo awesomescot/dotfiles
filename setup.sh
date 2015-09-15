@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in .vim .vimrc .gvimrc .bashrc .bash_profile; do
+for i in .vim .vimrc .gvimrc .bashrc .bash_profile .tmux.conf; do
 
 	if [ -f ${HOME}/${i} ] ; then
 		echo "moving ${HOME}/${i} to ${HOME}/${i}.bkup"
@@ -17,6 +17,9 @@ fi
 ln -s ${HOME}/.dotfiles/vim/vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.dotfiles/vim/gvimrc ${HOME}/.gvimrc
 ln -s ${HOME}/.dotfiles/vim ${HOME}/.vim
+
+#setup tmux
+ln -s ${HOME}/.dotfiles/tmux/conf ${HOME}/.tmux.conf
 
 #setup bash
 ln -s ${HOME}/.dotfiles/bash/bashrc ${HOME}/.bashrc
