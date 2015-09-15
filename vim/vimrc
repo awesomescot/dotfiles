@@ -7,6 +7,9 @@ source ~/.dotfiles/vim/bundles.vim
 :set nomodeline
 :set t_Co=256
 :set showcmd
+:set expandtab
+:set tabstop=2
+:set shiftwidth=2
 
 if $TERM == 'screen'
   set term=xterm

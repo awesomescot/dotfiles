@@ -86,6 +86,10 @@ if [[ -s $HOME/.rvm/scripts/rvm ]] ; then
 fi
 ##################################################################
 HOSTNAME=`hostname`
+# source the default alias file
+if [ -f ${HOME}/.dotfiles/bash/aliases/default ]; then
+        .  ${HOME}/.dotfiles/bash/aliases/default
+fi
 # source in any host specific stuff
 if [ -f ${HOME}/.dotfiles/bash/aliases/${HOSTNAME} ]; then
         .  ${HOME}/.dotfiles/bash/aliases/${HOSTNAME}
