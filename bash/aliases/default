@@ -5,5 +5,11 @@ function gpm {
         	git add -A . && git commit -m "$1" && git push origin $2
 	fi
 }
+function cpr {
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  message=$1
+  branch=$2
+  git checkout -b $branch && gpm $message $branch && hub pull-request -m $message -b $current_branch
+}
 alias gs="git status"
 
