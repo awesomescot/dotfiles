@@ -2,7 +2,7 @@
 
 # if we are in osx
 #install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #install zsh
 brew install zsh zsh-completions
 #install oh-my-zsh
