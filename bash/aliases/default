@@ -1,8 +1,10 @@
 function gpm {
 	if [ -z "$2" ]; then
-        	git add -A . && git commit -m "$1" && git push
+    echo "You must provide two arguments!"
+    echo "usage: gpm 'comment' branch"
+    #git add -A . && git commit -m "$1" && git push
 	else
-        	git add -A . && git commit -m "$1" && git push origin $2
+    git add -A . && git commit -m "$1" && git push origin $2
 	fi
 }
 function cpr {
@@ -12,4 +14,11 @@ function cpr {
   git checkout -b $branch && gpm $message $branch && hub pull-request -m $message -b $current_branch
 }
 alias gs="git status"
-
+alias dc="docker-compose"
+function retag {
+  TAG=$1
+  git tag -d $TAG
+  git push origin :refs/tags/$TAG
+  git tag $TAG
+  git push origin $TAG
+}
