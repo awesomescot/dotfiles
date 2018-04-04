@@ -25,6 +25,8 @@ fi
 ln -s ${HOME}/.dotfiles/vim/vimrc ${HOME}/.vimrc
 ln -s ${HOME}/.dotfiles/vim/gvimrc ${HOME}/.gvimrc
 ln -s ${HOME}/.dotfiles/vim ${HOME}/.vim
+# create vim temp dir
+mkdir -p ${HOME}/tmp/vim
 
 #setup tmux
 ln -s ${HOME}/.dotfiles/tmux/conf ${HOME}/.tmux.conf
