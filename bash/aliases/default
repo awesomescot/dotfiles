@@ -14,11 +14,13 @@ function cpr {
   git checkout -b $branch && gpm $message $branch && hub pull-request -m $message -b $current_branch
 }
 alias gs="git status"
-alias dc="docker-compose"
-function retag {
-  TAG=$1
-  git tag -d $TAG
-  git push origin :refs/tags/$TAG
-  git tag $TAG
-  git push origin $TAG
+alias dc="docker-compose -f docker-compose.yml -f docker-compose.learn.yml"
+function dei {
+  dc exec ironboard bash -c "$@"
 }
+function remote-sync {
+  echo "chowning remote files..."
+  ssh scot.lrn.sh "sudo chown -R scot:scot ~"
+  rsync -v -zar --delete /Users/scot/git/ironboard/ scot@scot.lrn.sh:/home/scot/ironboard --exclude=blib --exclude=tmp --exclude=log '--exclude=.git*' --exclude=node_modules --exclude=.DS_Store --exclude=Build --exclude=_build
+}
+alias local-sync="rsync -v -zar scot@scot.lrn.sh:/home/scot/ironboard/ /Users/scot/git/ironboard/ --exclude=blib --exclude=tmp --exclude=log '--exclude=.git*' --exclude=node_modules --exclude=.DS_Store --exclude=Build --exclude=_build"

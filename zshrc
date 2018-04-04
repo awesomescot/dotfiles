@@ -113,3 +113,6 @@ fi
 [ -f /home/scot/.travis/travis.sh ] && source /home/scot/.travis/travis.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+eval "$(direnv hook zsh)"
+
