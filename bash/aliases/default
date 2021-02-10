@@ -13,6 +13,11 @@ function cpr {
   branch=$2
   git checkout -b $branch && gpm $message $branch && hub pull-request -m $message -b $current_branch
 }
+
+# alias for opsourced
+alias bbuild='ssh bbuild -t "screen -r -S scot-screen"'
+
+alias tf="terraform"
 alias gs="git status"
 alias gd="git diff"
 alias dc="docker-compose -f docker-compose.yml -f docker-compose.learn.yml"

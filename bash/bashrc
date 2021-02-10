@@ -181,3 +181,5 @@ fi
 
 # added by travis gem
 [ -f /home/scot/.travis/travis.sh ] && source /home/scot/.travis/travis.sh
+
+complete -C /usr/local/bin/terraform terraform
