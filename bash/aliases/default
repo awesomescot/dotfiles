@@ -14,6 +14,7 @@ function cpr {
   git checkout -b $branch && gpm $message $branch && hub pull-request -m $message -b $current_branch
 }
 alias gs="git status"
+alias gd="git diff"
 alias dc="docker-compose -f docker-compose.yml -f docker-compose.learn.yml"
 function dei {
   dc exec ironboard bash -c "$@"
