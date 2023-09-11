@@ -14,6 +14,8 @@ function cpr {
   git checkout -b $branch && gpm $message $branch && hub pull-request -m $message -b $current_branch
 }
 
+alias kubectl="minikube kubectl --"
+
 # alias for opsourced
 alias bbuild='ssh bbuild -t "screen -r -S scot-screen"'
 
