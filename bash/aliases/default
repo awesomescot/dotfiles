@@ -1,10 +1,20 @@
+#function gpm {
+#	if [ -z "$2" ]; then
+#    echo "You must provide two arguments!"
+#    echo "usage: gpm 'comment' branch"
+#    #git add -A . && git commit -m "$1" && git push
+#	else
+#    git commit -m "$1" && git push origin $2
+#	fi
+#}
 function gpm {
-	if [ -z "$2" ]; then
-    echo "You must provide two arguments!"
-    echo "usage: gpm 'comment' branch"
+	if [ -z "$1" ]; then
+    echo "You must provide one arguments!"
+    echo "usage: gpm 'comment'"
     #git add -A . && git commit -m "$1" && git push
 	else
-    git add -A . && git commit -m "$1" && git push origin $2
+    current_branch=$(git branch --show-current)
+    git commit -m "$1" && git push origin $current_branch
 	fi
 }
 function cpr {
@@ -13,8 +23,47 @@ function cpr {
   branch=$2
   git checkout -b $branch && gpm $message $branch && hub pull-request -m $message -b $current_branch
 }
+function merge_main {
+  git checkout main
+  git pull
+  git checkout -
+  git merge main
+}
+
+# TODO: Create an alias to create aliases.
+# Something like this: create_alias alias_name "command to run"
+# For example create_alias gpo "git pull origin"
+# that would then add that alias to this file.
 
 alias tf="terraform"
 alias gs="git status"
 alias gd="git diff"
 alias dc="docker-compose -f docker-compose.yml -f docker-compose.learn.yml"
+
+alias kucc="kubectl config current-context"
+alias kuuc="kubectl config use-context"
+alias ku="kubectl"
+
+# Example usage: dd-files 898546818973.dkr.ecr.us-east-1.amazonaws.com/python-rclone:3.10 898546818973.dkr.ecr.us-east-1.amazonaws.com/python-rclone:3.10.8-bullseye-20240528
+function dd-files() {
+        FILENAME_1="files.${${1#*\/*}/:/"."}.txt"
+        FILENAME_2="files.${${2#*\/*}/:/"."}.txt"
+
+        echo "Generating file list for ${1} to ${FILENAME_1}..."
+        docker run --user 0:0 --entrypoint /bin/sh -it $1 -c 'find / -type f -not \( -path "/proc/*" -or -path "/sys/*" -or -path "/boot/*" -or -path "/dev" -or -path "/mnt" -or -path "/run" \) -exec md5sum {} + | sort -k 2' > "${FILENAME_1}"
+
+        echo "Generating file list for ${2} to ${FILENAME_2}..."
+        docker run --user 0:0 --entrypoint /bin/sh -it $2 -c 'find / -type f -not \( -path "/proc/*" -or -path "/sys/*" \) -exec md5sum {} + | sort -k 2' > "${FILENAME_2}"
+}
+
+# Example usage: dd-files 898546818973.dkr.ecr.us-east-1.amazonaws.com/python-rclone:3.10 898546818973.dkr.ecr.us-east-1.amazonaws.com/python-rclone:3.10.8-bullseye-20240528
+function dd-packages() {
+        FILENAME_1="packages.${${1#*\/*}/:/"."}.txt"
+        FILENAME_2="packages.${${2#*\/*}/:/"."}.txt"
+
+        echo "Generating file list for ${1} to ${FILENAME_1}..."
+        docker run --user 0:0 --entrypoint /bin/sh -it $1 -c  'pip freeze' > "${FILENAME_1}"
+
+        echo "Generating file list for ${2} to ${FILENAME_2}..."
+        docker run --user 0:0 --entrypoint /bin/sh -it $2 -c  'pip freeze' > "${FILENAME_2}"
+}

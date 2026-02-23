@@ -50,7 +50,7 @@ ZSH_THEME="muse"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cap knife rvm zsh-syntax-highlighting)
+plugins=(git git-plugin knife rvm poetry)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,8 +114,21 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+
+# Needed for just autocomplete, but will pull in all of brew
+# https://github.com/casey/just#shell-completion-scripts
+# Init Homebrew, which adds environment variables
+eval "$(brew shellenv)"
+# Add Homebrew's site-functions to fpath
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+
+# Needed for autosuggestions (does compinit)
+source $ZSH/oh-my-zsh.sh
+export PATH="/opt/homebrew/opt/mariadb@10.6/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
