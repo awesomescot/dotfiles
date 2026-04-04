@@ -92,8 +92,8 @@ fi
 ##################################################################
 HOSTNAME=`hostname`
 # source the default alias file
-if [ -f ${HOME}/.dotfiles/bash/aliases/default ]; then
-        .  ${HOME}/.dotfiles/bash/aliases/default
+if [ -f ${HOME}/.dotfiles/aliases ]; then
+        .  ${HOME}/.dotfiles/aliases
 fi
 # source in any host specific stuff
 if [ -f ${HOME}/.dotfiles/bash/aliases/${HOSTNAME} ]; then
@@ -108,9 +108,6 @@ if ! [ -d ${HOME}/tmp/${USERNAME}-vim ] ; then
         mkdir -p ${HOME}/tmp/vim
 fi
 
-
-# added by travis gem
-[ -f /home/scot/.travis/travis.sh ] && source /home/scot/.travis/travis.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

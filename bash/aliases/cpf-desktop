@@ -1,7 +1,0 @@
-alias kcu='knife cookbook upload '
-alias vp='vagrant provision'
-alias ss='ssh sspinner.eng.cpf.com'
-
-function gpm {
-	git add -A . && git commit -m "$1" && git push
-}
